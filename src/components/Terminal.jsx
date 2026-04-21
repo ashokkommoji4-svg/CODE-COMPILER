@@ -29,7 +29,13 @@ const TerminalComponent = ({ onInput, terminalRef }) => {
 
     terminalInstance.current.loadAddon(fitAddon.current);
     terminalInstance.current.open(xtermRef.current);
-    fitAddon.current.fit();
+    
+    // Use setTimeout to ensure the terminal is fully rendered and has dimensions
+    setTimeout(() => {
+      if (terminalInstance.current && xtermRef.current) {
+        fitAddon.current.fit();
+      }
+    }, 0);
 
     terminalInstance.current.onData((data) => {
       if (inputHandlerRef.current) {

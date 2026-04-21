@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import TerminalComponent from './components/Terminal';
 
-const WS_BASE_URL = import.meta.env.VITE_API_URL.replace('http', 'ws') + '/ws/compiler/execute/';
+const WS_BASE_URL = import.meta.env.VITE_API_URL.replace(/\/$/, '').replace('http', 'ws') + '/ws/compiler/execute/';
 
 const LANGUAGE_CONFIGS = {
   python: {
